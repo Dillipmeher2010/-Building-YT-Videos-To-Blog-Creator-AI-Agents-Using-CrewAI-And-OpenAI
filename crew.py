@@ -1,18 +1,19 @@
+# crew.py
 from crewai import Crew, Process
 from agents import researcher, writer
 from task import research_task, write_task
 
-# Forming the tech-focused crew with some enhanced configurations
+# Forming the tech-focused crew with caching enabled
 crew = Crew(
-  agents=[researcher, writer],
-  tasks=[research_task, write_task],
-  process=Process.sequential,  # Optional: Sequential task execution is default
-  memory=True,
-  cache=True,
-  max_rpm=100,
-  share_crew=True
+    agents=[researcher, writer],
+    tasks=[research_task, write_task],
+    process=Process.sequential,
+    memory=True,
+    cache=True,
+    max_rpm=100,
+    share_crew=True
 )
 
-# Starting the task execution process with enhanced feedback
-result = crew.kickoff(inputs={'topic': 'AI vs ML VS DL VS Data Science'})
-print(result)
+# This function will be called in the Streamlit app
+def kickoff_crew(topic):
+    return crew.kickoff(inputs={'topic': topic})
