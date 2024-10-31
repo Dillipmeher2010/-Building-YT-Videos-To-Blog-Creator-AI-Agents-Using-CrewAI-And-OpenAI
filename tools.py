@@ -1,4 +1,5 @@
+# tools.py
 from crewai_tools import YoutubeChannelSearchTool
 
-# Initialize the tool with a specific Youtube channel handle to target your search
+# Initialize the tool with a specific YouTube channel handle
 tool = YoutubeChannelSearchTool(youtube_channel_handle='@krishnaik06')
